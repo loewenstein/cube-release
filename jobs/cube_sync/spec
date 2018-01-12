@@ -2,15 +2,13 @@
 name: cube_sync
 
 templates:
-  sync_ctl.erb: bin/sync_ctl
-  sync_as_vcap.erb: bin/sync_as_vcap
+  bmp.yml.erb: config.bpm.yml
   kube_config.erb: config/kube.yml
   kube_ca_pem.erb: config/ca.pem
   kube_client_certificate.erb: config/kube_client_certificate.crt
   kube_client_key.erb: config/kube_client_key.key
 
 packages:
-  - pid_utils
   - cube
 
 properties:
