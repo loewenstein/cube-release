@@ -1,8 +1,20 @@
-<%
-  config = p("cube_sync.config")
-
-  config['clusters'][0]['cluster']['certificate-authority'] = "/var/vcap/jobs/cube_sync/config/ca.pem"
-  config['users'][0]['user']['client-certificate'] = "/var/vcap/jobs/cube_sync/config/kube_client_certificate.crt"
-  config['users'][0]['user']['client-key'] = "/var/vcap/jobs/cube_sync/config/kube_client_key.key"
-%>
-<%= config.to_yaml %>
+apiVersion: v1
+clusters:
+- cluster:
+    certificate-authority: /var/vcap/jobs/cube_sync/config/kube_ca.pem
+    server: <%= p('cube_sync.kube.cluster.server') %>
+  name: cube
+contexts:
+- context:
+    cluster: cube
+    user: cube
+  name: cube
+current-context: minikube
+kind: Config
+preferences: {}
+users:
+- name: cube
+  user:
+    as-user-extra: {}
+    client-certificate: /var/vcap/jobs/cube_sync/config/kube_client_certificate.crt
+    client-key: /var/vcap/jobs/cube_sync/config/kube_client_key.key

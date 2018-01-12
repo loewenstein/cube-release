@@ -23,6 +23,12 @@ properties:
     description: "The internal password for the Cloud Controller"
   cube_sync.backend:
     default: k8s
-    description: "The backend to use"
-  cube_sync.config:
-    description: "The full Kubernetes configuration file content. Note: Avoid using certificates file references, instead you should use the file content."
+    description: The backend to use
+  cube_sync.kube.user.client_key:
+    description: The client key to authenticate against the Kubernetes cluster
+  cube_sync.kube.user.client_certificate:
+    description: The client certificate to authenticate against the Kubernetes cluster
+  cube_sync.kube.cluster.server:
+    description: The api endpoint of the Kubernetes cluster
+  cube_sync.kube.cluster.certificate_authority:
+    description: The certificate authority of the Kubernetes cluster
